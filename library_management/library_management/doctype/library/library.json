@@ -1,0 +1,53 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{book_name}-{##}",
+ "creation": "2024-09-09 18:53:42.074686",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "book_name",
+  "quantity_available"
+ ],
+ "fields": [
+  {
+   "fieldname": "book_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Book Name",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "quantity_available",
+   "fieldtype": "Data",
+   "label": "Quantity Available",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-09-09 18:57:17.648795",
+ "modified_by": "Administrator",
+ "module": "Library Management",
+ "name": "Library",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

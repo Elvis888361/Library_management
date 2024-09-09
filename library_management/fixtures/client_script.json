@@ -1,0 +1,13 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Membership",
+  "enabled": 1,
+  "modified": "2024-09-09 19:42:18.320269",
+  "module": "Library Management",
+  "name": "Membership",
+  "script": "frappe.ui.form.on('Membership', {\n\trefresh(frm) {\n\t\t// your code here\n\t},\n    date_of_birth(frm) {\n        const today = new Date();\n        const birth = new Date(frm.doc.date_of_birth);\n        \n        if (isNaN(birth)) {\n            frappe.msgprint(__('Invalid date of birth'));\n            return;\n        }\n\n        let age = today.getFullYear() - birth.getFullYear();\n        const monthDifference = today.getMonth() - birth.getMonth();\n        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birth.getDate())) {\n            age--;\n        }\n\n        frm.set_value(\"age\", age); \n        frm.refresh_field(\"age\");\n    }\n})",
+  "view": "Form"
+ }
+]
