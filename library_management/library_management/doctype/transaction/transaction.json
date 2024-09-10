@@ -8,8 +8,10 @@
  "field_order": [
   "book",
   "transaction_type",
+  "rent_fee",
   "column_break_xpek",
   "member",
+  "member__name",
   "section_break_iwhl",
   "issue_date",
   "column_break_kjan",
@@ -22,7 +24,7 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Book",
-   "options": "Book"
+   "options": "Item"
   },
   {
    "fieldname": "column_break_xpek",
@@ -33,6 +35,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Member",
+   "link_filters": "[[\"Membership\",\"outstanding_debt\",\">\",-500]]",
    "options": "Membership"
   },
   {
@@ -58,11 +61,24 @@
    "fieldname": "return_date",
    "fieldtype": "Date",
    "label": "Return Date"
+  },
+  {
+   "fetch_from": "member.first_name",
+   "fieldname": "member__name",
+   "fieldtype": "Data",
+   "label": "Member  Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rent_fee",
+   "fieldtype": "Float",
+   "label": "Rent Fee",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-09 19:26:08.206193",
+ "modified": "2024-09-10 21:05:08.355965",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Transaction",

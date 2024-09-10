@@ -6,6 +6,7 @@ frappe.ui.form.on("Membership", {
 	frm.add_custom_button(__('Make Payment for Subscription'), function(){
 			frappe.set_route('form', "Payment Entry")
 		});
+		frm.page.set_indicator(frm.doc.status, 'blue')
 	},
 	validate(frm){
 		frappe.call({

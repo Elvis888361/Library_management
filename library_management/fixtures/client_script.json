@@ -2,12 +2,12 @@
  {
   "docstatus": 0,
   "doctype": "Client Script",
-  "dt": "Membership",
+  "dt": "Payment Entry",
   "enabled": 1,
-  "modified": "2024-09-09 19:42:18.320269",
+  "modified": "2024-09-10 20:52:50.694699",
   "module": "Library Management",
-  "name": "Membership",
-  "script": "frappe.ui.form.on('Membership', {\n\trefresh(frm) {\n\t\t// your code here\n\t},\n    date_of_birth(frm) {\n        const today = new Date();\n        const birth = new Date(frm.doc.date_of_birth);\n        \n        if (isNaN(birth)) {\n            frappe.msgprint(__('Invalid date of birth'));\n            return;\n        }\n\n        let age = today.getFullYear() - birth.getFullYear();\n        const monthDifference = today.getMonth() - birth.getMonth();\n        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birth.getDate())) {\n            age--;\n        }\n\n        frm.set_value(\"age\", age); \n        frm.refresh_field(\"age\");\n    }\n})",
+  "name": "Payment Entry Script",
+  "script": "frappe.ui.form.on('Payment Entry', {\n\tparty(frm) {\n\t\t// your code here\n\t\tfrm.set_value(\"custom_membership\", frm.doc.party)\n\t},\n\tvalidate(frm){\n\t    frappe.call({\n\t\t\tmethod: 'library_management.services.rest.update_outstanding_debt',\n\t\t\targs: {\n\t\t\t\t'party': frm.doc.party\n\t\t\t},\n\t\t\tcallback: function(r) {\n\t\t\t\tfrappe.msgprint(r.message)\n\t\t\t}\n\t});\n\t}\n})",
   "view": "Form"
  }
 ]

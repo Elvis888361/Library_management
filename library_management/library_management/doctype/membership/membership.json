@@ -12,12 +12,14 @@
   "date_of_birth",
   "age",
   "religion",
+  "status",
   "column_break_cdgn",
   "last_name",
   "phone_number",
   "date_of_admission",
   "gender",
-  "address"
+  "address",
+  "outstanding_debt"
  ],
  "fields": [
   {
@@ -84,6 +86,19 @@
    "fieldtype": "Link",
    "label": "Address",
    "options": "Address"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "label": "Status",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "outstanding_debt",
+   "fieldtype": "Float",
+   "label": "Outstanding Amount/Debt",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -91,9 +106,17 @@
   {
    "link_doctype": "Transaction",
    "link_fieldname": "member"
+  },
+  {
+   "link_doctype": "Payment Entry",
+   "link_fieldname": "party"
+  },
+  {
+   "link_doctype": "Customer",
+   "link_fieldname": "custom_membership"
   }
  ],
- "modified": "2024-09-09 20:26:16.356094",
+ "modified": "2024-09-10 21:06:54.029397",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Membership",
