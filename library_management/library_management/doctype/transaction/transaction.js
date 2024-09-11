@@ -5,7 +5,7 @@ frappe.ui.form.on("Transaction", {
 	refresh(frm) {
 
 	},
-	validate(frm){
+	after_save(frm){
 		frappe.call({
 			method: 'library_management.library_management.doctype.transaction.transaction.update_transaction_status',
 			args: {
@@ -54,5 +54,19 @@ frappe.ui.form.on("Transaction", {
                 frm.set_value('rent_fee', r.message);
             },
         });
+	},
+	rent_fee(frm){
+		frappe.call({
+			method: 'library_management.library_management.doctype.transaction.transaction.update_outstanding_amount',
+			args: {
+				'name': frm.doc.name,
+				'member':frm.doc.member
+			},
+			callback: function(r) {
+				if(r.message){
+					
+				}
+			}
+		})
 	}
 });

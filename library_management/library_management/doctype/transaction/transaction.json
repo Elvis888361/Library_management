@@ -72,13 +72,12 @@
   {
    "fieldname": "rent_fee",
    "fieldtype": "Float",
-   "label": "Rent Fee",
-   "read_only": 1
+   "label": "Rent Fee"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-10 21:05:08.355965",
+ "modified": "2024-09-11 18:48:26.610694",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Transaction",
