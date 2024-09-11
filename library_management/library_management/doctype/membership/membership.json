@@ -88,6 +88,7 @@
    "options": "Address"
   },
   {
+   "default": "No status",
    "fieldname": "status",
    "fieldtype": "Data",
    "label": "Status",
@@ -116,7 +117,7 @@
    "link_fieldname": "custom_membership"
   }
  ],
- "modified": "2024-09-10 21:06:54.029397",
+ "modified": "2024-09-11 12:01:26.370806",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Membership",
