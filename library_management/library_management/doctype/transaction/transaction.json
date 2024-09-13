@@ -1,11 +1,12 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{book}-{member}-{####}",
+ "autoname": "format:{book}-{####}",
  "creation": "2024-09-09 19:07:40.074189",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "publisher",
   "book",
   "transaction_type",
   "rent_fee",
@@ -73,11 +74,17 @@
    "fieldname": "rent_fee",
    "fieldtype": "Float",
    "label": "Rent Fee"
+  },
+  {
+   "fieldname": "publisher",
+   "fieldtype": "Link",
+   "label": "Publisher",
+   "options": "Publisher"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-11 18:48:26.610694",
+ "modified": "2024-09-11 19:33:53.468841",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Transaction",

@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{first_name}-{phone_number}",
+ "autoname": "format:{first_name}-{###}",
  "creation": "2024-09-09 15:41:52.919413",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -117,7 +117,7 @@
    "link_fieldname": "custom_membership"
   }
  ],
- "modified": "2024-09-11 12:01:26.370806",
+ "modified": "2024-09-11 19:25:40.834341",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Membership",

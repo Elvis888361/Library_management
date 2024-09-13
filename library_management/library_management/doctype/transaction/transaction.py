@@ -46,3 +46,28 @@ def check_library(book):
 	else:
 		frappe.throw("The book is not in the library")
 		frappe.validated = false
+
+@frappe.whitelist()
+def get_book(publisher):
+    book_names = frappe.get_all("Book", filters={'publisher': publisher}, fields=['name'])
+    library_list = []
+    for book in book_names:
+        descriptions = frappe.get_all("Book Items", filters={'parent': book.name}, fields=['book_description'])
+        for description in descriptions:
+            library_doc = frappe.get_all("Library", filters={'name': description['book_description']}, fields=['book_name'])
+            library_list.append(library_doc)
+    print(library_list)
+    return library_list[0][0].book_name
+
+@frappe.whitelist()
+def get_publisher(book):
+    parent_names = frappe.get_all("Library", filters={'book_name': book}, fields=['name'])
+    print(parent_names)
+    publisher_list = []
+    for publisher in parent_names:
+        publisher_name = frappe.get_all("Book Items", filters={'book_description': publisher.name}, fields=['parent'])
+        for pub in publisher_name:
+            publish_doc = frappe.get_all("Book", filters={'name': pub['parent']}, fields=['publisher'])
+            publisher_list.append(publish_doc)
+    print(publisher_list[0][0].publisher)
+    return publisher_list[0][0].publisher

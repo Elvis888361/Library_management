@@ -1,35 +1,18 @@
 import frappe
 
-# def send_email():
-# 	doc = frappe.get_doc("Email Sending Tool", docname)
-
-#     for row in doc.salary_slips:
-#         receiver = frappe.db.get_value("Employee", row.employee, "prefered_email")
-#         payroll_settings = frappe.get_single("Payroll Settings")
-#         message = "Please see attachment"
-#         password = None
-#         if payroll_settings.encrypt_salary_slips_in_emails:
-#             password = generate_password_for_pdf(payroll_settings.password_policy, row.employee)
-#             message += """<br>Note: Your salary slip is password protected,
-#                 the password to unlock the PDF is of the format {0}. """.format(payroll_settings.password_policy)
-
-#         if receiver:
-#             email_args = {
-#                 "recipients": [receiver],
-#                 "message": _(message),
-#                 "subject": 'Salary Slip',
-#                 "attachments": [frappe.attach_print("Salary Slip", row.salary_slip, file_name=row.salary_slip, password=password)],
-#                 "reference_doctype": "Salary Slip",
-#                 "reference_name": row.salary_slip
-#             }
-#             if not frappe.flags.in_test:
-#                 frappe.enqueue(method=frappe.sendmail, queue='short', timeout=10000, is_async=True, **email_args)
-#                 return "Emails have been sent with flags."
-#             else:
-#                 frappe.sendmail(**email_args)
-#                 return "Emails have been sent."
-#         else:
-#             frappe.msgprint(_("{0}: Employee ema"))
+@frappe.whitelist()
+def send_email(name):
+    the_doc=frappe.get_doc('Payment Entry', name)
+    mem_the_doc=frappe.get_doc('Membership', the_doc.custom_membership)
+    frappe.sendmail(
+        recipients = mem_the_doc.email,
+        cc = '',
+        subject = "Payment entry processed",
+        content = f"The payment entry {name} has been processed your amount paid is {the_doc.paid_amount}",
+        reference_doctype = '',
+        reference_name = '',
+        now = True
+    )
 
 @frappe.whitelist()
 def update_outstanding_debt(party):
