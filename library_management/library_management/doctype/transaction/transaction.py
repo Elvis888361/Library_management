@@ -1,6 +1,7 @@
 # Copyright (c) 2024, Library and contributors
 # For license information, please see license.txt
 
+from pickle import FALSE
 import frappe
 from frappe.model.document import Document
 
@@ -37,6 +38,15 @@ def update_outstanding_amount(name,member):
 	return "Member Outstanding debt Updated"
 
 @frappe.whitelist()
+def check_outstanding_debt(member):
+    membership = frappe.get_doc('Membership', member)
+    transaction=frappe.get_doc('Transaction', {"member":member})
+    Total_amount=float(membership.outstanding_debt)+float(transaction.rent_fee)
+    if Total_amount> 500:
+        frappe.throw("The member has an outstanding debt of more than ksh. 500")
+    return "The member has an outstanding debt of less than ksh. 500"
+
+@frappe.whitelist()
 def check_library(book):
 	print(book)
 	library=frappe.db.sql(f""" Select quantity_available from `tabLibrary` where book_name='{book}';""", as_dict=1)
@@ -45,7 +55,23 @@ def check_library(book):
 		return "Success"
 	else:
 		frappe.throw("The book is not in the library")
-		frappe.validated = false
+		frappe.validated = FALSE
+
+@frappe.whitelist()
+def update_library_addition(name):
+	transaction = frappe.get_doc('Transaction', name)
+	library = frappe.get_doc('Library', {"book_name":transaction.book})
+	library.quantity_available = int(library.quantity_available) + 1
+	library.save()
+	return "Library Addition Updated"
+
+@frappe.whitelist()
+def update_library_deduction(name):
+	transaction = frappe.get_doc('Transaction', name)
+	library = frappe.get_doc('Library', {"book_name":transaction.book})
+	library.quantity_available = int(library.quantity_available) - 1
+	library.save()
+	return "Library Deduction Updated"
 
 @frappe.whitelist()
 def get_book(publisher):

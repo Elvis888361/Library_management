@@ -16,7 +16,8 @@
   "section_break_iwhl",
   "issue_date",
   "column_break_kjan",
-  "return_date"
+  "return_date",
+  "amended_from"
  ],
  "fields": [
   {
@@ -25,7 +26,8 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Book",
-   "options": "Item"
+   "options": "Item",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_xpek",
@@ -37,9 +39,11 @@
    "in_list_view": 1,
    "label": "Member",
    "link_filters": "[[\"Membership\",\"outstanding_debt\",\">\",-500]]",
-   "options": "Membership"
+   "options": "Membership",
+   "reqd": 1
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "transaction_type",
    "fieldtype": "Select",
    "label": "transaction_type",
@@ -52,7 +56,8 @@
   {
    "fieldname": "issue_date",
    "fieldtype": "Date",
-   "label": "Issue Date"
+   "label": "Issue Date",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_kjan",
@@ -61,7 +66,8 @@
   {
    "fieldname": "return_date",
    "fieldtype": "Date",
-   "label": "Return Date"
+   "label": "Return Date",
+   "reqd": 1
   },
   {
    "fetch_from": "member.first_name",
@@ -79,12 +85,24 @@
    "fieldname": "publisher",
    "fieldtype": "Link",
    "label": "Publisher",
-   "options": "Publisher"
+   "options": "Publisher",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Transaction",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_submittable": 1,
  "links": [],
- "modified": "2024-09-11 19:33:53.468841",
+ "modified": "2024-09-15 14:42:38.620214",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Transaction",

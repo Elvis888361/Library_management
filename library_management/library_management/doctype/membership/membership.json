@@ -8,6 +8,7 @@
  "field_order": [
   "library_membership_registration_section",
   "first_name",
+  "full_name",
   "email",
   "date_of_birth",
   "age",
@@ -100,6 +101,11 @@
    "fieldtype": "Float",
    "label": "Outstanding Amount/Debt",
    "read_only": 1
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -117,7 +123,7 @@
    "link_fieldname": "custom_membership"
   }
  ],
- "modified": "2024-09-11 19:25:40.834341",
+ "modified": "2024-09-15 14:56:23.612992",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Membership",

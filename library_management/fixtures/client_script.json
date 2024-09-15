@@ -4,10 +4,10 @@
   "doctype": "Client Script",
   "dt": "Payment Entry",
   "enabled": 1,
-  "modified": "2024-09-13 19:31:44.063823",
+  "modified": "2024-09-15 15:14:10.264433",
   "module": "Library Management",
   "name": "Payment Entry Script",
-  "script": "frappe.ui.form.on('Payment Entry', {\n\tparty(frm) {\n\t\t// your code here\n\t\tfrm.set_value(\"custom_membership\", frm.doc.party)\n\t},\n\tvalidate(frm){\n\t    frappe.call({\n\t\t\tmethod: 'library_management.services.rest.update_outstanding_debt',\n\t\t\targs: {\n\t\t\t\t'party': frm.doc.party\n\t\t\t},\n\t\t\tcallback: function(r) {\n\t\t\t\tfrappe.msgprint(r.message)\n\t\t\t}\n\t});\n\t},\n\trefresh(frm){\n\t     frappe.call({\n\t\t\tmethod: 'library_management.services.rest.send_email',\n\t\t\targs: {\n\t\t\t\t'name': frm.doc.name\n\t\t\t},\n\t\t\tcallback: function(r) {\n\t\t\t\tfrappe.msgprint(r.message)\n\t\t\t}\n\t});\n\t}\n})",
+  "script": "frappe.ui.form.on('Payment Entry', {\n\tparty(frm) {\n\t\t// your code here\n\t\tfrm.set_value(\"custom_membership\", frm.doc.party)\n\t},\n\tvalidate(frm){\n\t    frappe.call({\n\t\t\tmethod: 'library_management.services.rest.update_outstanding_debt',\n\t\t\targs: {\n\t\t\t\t'party': frm.doc.party\n\t\t\t},\n\t\t\tcallback: function(r) {\n\t\t\t\tfrappe.msgprint(r.message)\n\t\t\t}\n\t});\n\t},\n\ton_submit(frm){\n\t     frappe.call({\n\t\t\tmethod: 'library_management.services.rest.send_email',\n\t\t\targs: {\n\t\t\t\t'name': frm.doc.name\n\t\t\t},\n\t\t\tcallback: function(r) {\n\t\t\t\tfrappe.msgprint(r.message)\n\t\t\t}\n\t});\n\t}\n})",
   "view": "Form"
  }
 ]
