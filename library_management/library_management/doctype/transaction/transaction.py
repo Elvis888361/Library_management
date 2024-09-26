@@ -42,7 +42,7 @@ def check_outstanding_debt(member):
     membership = frappe.get_doc('Membership', member)
     transaction=frappe.get_doc('Transaction', {"member":member})
     Total_amount=float(membership.outstanding_debt)+float(transaction.rent_fee)
-    if Total_amount> 500:
+    if Total_amount< 500:
         frappe.throw("The member has an outstanding debt of more than ksh. 500")
     return "The member has an outstanding debt of less than ksh. 500"
 
@@ -83,7 +83,10 @@ def get_book(publisher):
             library_doc = frappe.get_all("Library", filters={'name': description['book_description']}, fields=['book_name'])
             library_list.append(library_doc)
     print(library_list)
-    return library_list[0][0].book_name
+    if library_list and library_list[0]:
+        return library_list[0][0].book_name
+    else:
+        frappe.throw("No books found for the given publisher.")
 
 @frappe.whitelist()
 def get_publisher(book):

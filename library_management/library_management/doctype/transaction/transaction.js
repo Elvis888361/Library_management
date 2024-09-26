@@ -23,7 +23,6 @@ frappe.ui.form.on("Transaction", {
                     }
                 },
                 error: function(err) {
-                    frappe.msgprint(__('An error occurred while fetching books.'));
                     console.error(err);
                 }
             });
@@ -48,7 +47,6 @@ frappe.ui.form.on("Transaction", {
                     }
                 },
                 error: function(err) {
-                    frappe.msgprint(__('An error occurred while fetching the publisher.'));
                     console.error(err);
                 }
             });
@@ -148,7 +146,6 @@ frappe.ui.form.on("Transaction", {
                     }
                 },
                 error: function(err) {
-                    frappe.msgprint(__('An error occurred while fetching books.'));
                     console.error(err);
                 }
             });
@@ -176,7 +173,6 @@ frappe.ui.form.on("Transaction", {
                     }
                 },
                 error: function(err) {
-                    frappe.msgprint(__('An error occurred while fetching books.'));
                     console.error(err);
                 }
             });

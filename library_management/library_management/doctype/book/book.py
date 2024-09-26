@@ -13,7 +13,6 @@ def get_qty_from_library(book_description):
     return qty_from_library
 @frappe.whitelist()
 def update_number_of_books(name):
-    # Retrieve book information from the 'Book Items' table
     book_information = frappe.get_all(
         'Book Items',
         filters={'parent': name},

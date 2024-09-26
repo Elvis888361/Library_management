@@ -42,8 +42,8 @@ frappe.ui.form.on("Membership", {
         frm.refresh_field("age");
     },
 	before_save(frm){
-		full_name=frm.doc.first_name+" "+frm.doc.last_name
-		frm.set_value("full_name",full_name)
+		const full_name = frm.doc.last_name ? frm.doc.first_name + " " + frm.doc.last_name : frm.doc.first_name;
+		frm.set_value("full_name", full_name);
 	}
 
 });

@@ -22,7 +22,7 @@ def update_outstanding_debt(party):
     total_outstanding_amount=0
     if(membership_outstanding_amount.outstanding_debt==None):
         debt=0
-        total_outstanding_amount=float(total_pay.amount)-float(debt)
+        total_outstanding_amount=float(total_pay.amount)+float(debt)
     else:
-        total_outstanding_amount=float(membership_outstanding_amount.outstanding_debt)-float(total_pay.amount)
+        total_outstanding_amount=float(membership_outstanding_amount.outstanding_debt)+float(total_pay.amount)
     frappe.db.set_value('Membership',{'name':party},'outstanding_debt',total_outstanding_amount)

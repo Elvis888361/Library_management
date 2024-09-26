@@ -32,7 +32,8 @@
    "fieldname": "first_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "First Name"
+   "label": "First Name",
+   "reqd": 1
   },
   {
    "fieldname": "email",
@@ -105,7 +106,8 @@
   {
    "fieldname": "full_name",
    "fieldtype": "Data",
-   "label": "Full Name"
+   "label": "Full Name",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -123,7 +125,7 @@
    "link_fieldname": "custom_membership"
   }
  ],
- "modified": "2024-09-15 14:56:23.612992",
+ "modified": "2024-09-26 12:35:43.267899",
  "modified_by": "Administrator",
  "module": "Library Management",
  "name": "Membership",
